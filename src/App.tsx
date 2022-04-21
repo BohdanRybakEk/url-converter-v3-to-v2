@@ -1,9 +1,12 @@
 import "./styles.css";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import BrandsService from "./services/brandsService";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [outputValue, setOutputValue] = useState('TODO: You will see the result here')
 
   const handleConvertUrl = async () => {
     try {
@@ -18,14 +21,27 @@ const App = () => {
     }
   };
 
+  const handleInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <div className="App">
-      <h1>URL Converter V3 to V2</h1>
-      {isLoading ? (
-        <h5>Loading...</h5>
-      ) : (
-        <input type="button" value="test" onClick={handleConvertUrl} />
-      )}
+      <h3>New Link (V3):</h3>
+      <input
+        className="textField"
+        value={inputValue}
+        onChange={handleInputValueChange}
+      />
+      <h3>
+        {isLoading ? (
+          `Loading...`
+        ) : (
+          <input type="button" onClick={handleConvertUrl} value="Convert" />
+        )}
+      </h3>
+      <h3>Old Link (V2):</h3>
+      <p className={isError ? 'errorText' : undefined}>{`${isError ? 'ERROR:' : ''} ${outputValue}`}</p>
     </div>
   );
 };

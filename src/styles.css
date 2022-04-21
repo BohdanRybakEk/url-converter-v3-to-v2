@@ -2,3 +2,11 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.textField {
+  width: 80%;
+}
+
+.errorText {
+  color: red;
+}
