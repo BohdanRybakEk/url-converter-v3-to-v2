@@ -37,7 +37,7 @@ const App = () => {
         {isLoading ? (
           `Loading...`
         ) : (
-          <input type="button" onClick={handleConvertUrl} value="Convert" />
+          <input type="button" disabled={!inputValue.length} onClick={handleConvertUrl} value="Convert" />
         )}
       </h3>
       <h3>Old Link (V2):</h3>
