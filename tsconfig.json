@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "lib": ["dom", "es2015"],
     "jsx": "react-jsx",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "useUnknownInCatchVariables": false
   }
 }
